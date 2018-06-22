@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="index.js"></script>
+</head>
+<body ng-controller="weatherCtrl">
+    <div class="container">
+        <h1 class="text-center">Five Day Weather Forecast For <span id="city">{{city}}</span>, <span id="country">{{country}}</span></h1>
+        <div class="card" ng-repeat="forecast in forecasts">
+            <h2 class="card-header text-center">{{forecast.date}}</h2>
+            <div class="card-body">
+                <div class="text-center">
+                    <img src="{{forecast.icon_url}}" alt="{{forecast.weather[0].main}}" width="50px" />
+                </div>
+                <p>Description: {{forecast.forecast.weather[0].description}}</p>
+                <p>Temperature: {{forecast.forecast.main.temp}}° F</p>
+                <p>High: {{forecast.forecast.main.temp_min}}° F</p>
+                <p>Low: {{forecast.forecast.main.temp_max}}° F</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
